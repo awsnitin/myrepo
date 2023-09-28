@@ -66,6 +66,7 @@ class MysfitModel(ObjectModel):
 
     GOODEVILINDEX="GoodEvilIndex"
     LAWCHAOSINDEX="LawChaosIndex"
+    NOCHAOSINDEX="NoChaosIndex"
 
     Name: str = ""
     Species: str = ""

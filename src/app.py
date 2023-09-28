@@ -28,6 +28,8 @@ def app_router(path, queryParams=None):
             filter['indexName'] = MysfitModel.GOODEVILINDEX
         elif attributeName == "LawChaos":
             filter['indexName'] = MysfitModel.LAWCHAOSINDEX
+       elif attributeName == "NoChaos":
+            filter['indexName'] = MysfitModel.NOCHAOSINDEX
         else:
             raise Exception("Unknown FilterExpression Key")
         filter['attributeKey'] = attributeName
