@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/python:latest
+FROM public.ecr.aws/docker/library/python:3.9.18
 
 COPY ./src /service
 COPY requirements-docker.txt /service
