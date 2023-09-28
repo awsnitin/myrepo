@@ -1,0 +1,40 @@
+schemaVersion: 2.0.0
+metadata:
+  name: aws-universal
+  version: 1.0.1
+  displayName: AWS Universal
+  description: Stack with AWS Universal Tooling
+  tags:
+    - aws
+    - a12
+  projectType: aws
+components:
+  - name: aws-runtime
+    container:
+      image: public.ecr.aws/aws-mde/universal-image:1.0
+      mountSources: true
+      volumeMounts:
+        - name: docker-store
+          path: /var/lib/docker
+  - name: docker-store
+    volume:
+      size: 16Gi
+events:
+  postStart:
+    - build-and-test-backend
+    - build-and-test-frontend
+commands:
+  - id: build-and-test-backend
+    exec:
+      commandLine: pip3 install -r requirements-dev.txt && pip3 install -r
+        requirements.txt && pip3 install -r requirements-docker.txt && python3
+        -m coverage run --branch --omit "*/tests/**" -m pytest -k unit
+        --junitxml=unitTests.xml && python3 -m coverage xml
+      workingDir: $PROJECT_SOURCE
+      component: aws-runtime
+  - id: build-and-test-frontend
+    exec:
+      commandLine: npm install && CI=true npm run test:unit -- --reporter=junit
+        --outputFile=unitTests.xml --coverage && npm run build-only
+      workingDir: $PROJECT_SOURCE/web
+      component: aws-runtime
