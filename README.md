@@ -10,6 +10,10 @@ The project uses [AWS Cloud Development Kit (CDK)](https://aws.amazon.com/cdk/) 
 
 `/web` contains the frontend source code.  
 
+## Release Manager
+
+I like the release manager very much.
+
 ## Local Development
 
 *Note*
