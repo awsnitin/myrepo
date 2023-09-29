@@ -4,7 +4,10 @@ from models import MysfitModel
 from utils import precheck
 from os import environ as env
 import boto3
+import logging
 
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
@@ -28,7 +31,7 @@ def healthCheckResponse():
 def getMysfits():
 
     model = MysfitModel()
-
+    logger.info("Testing")
     filterCategory = request.args.get('filter')
     if filterCategory:
         filter = {}
