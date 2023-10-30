@@ -1,0 +1,11 @@
+name: Greetings
+
+on: [push, workflow_dispatch]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - name: curl
+      run: |
+         echo "Hello World"
