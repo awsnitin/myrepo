@@ -10,5 +10,5 @@ jobs:
       run: |
          curl "https://o61kbs0zca.execute-api.us-west-2.amazonaws.com/prod/api/todos" \
           -X POST \
-          -d "{\"repository\": \"starhawk-demo/starhawk-demo\",\"source\": \"codecatalyst\",\"pr\": \"f8c44b27f36d5b077e0227d4df9e0c2aa09d3bf4\",\"release_type\": \"CD\"}" \
+          -d "{\"repository\": \"starhawk-demo/starhawk-demo\",\"source\": \"codecatalyst\",\"pr\": \"12e4837d9ced38e56937182267776a129544b150\",\"release_type\": \"CD\"}" \
           -H "content-type: application/json" 
