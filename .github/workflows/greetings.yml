@@ -4,11 +4,8 @@ on: [push, workflow_dispatch]
 
 jobs:
   greeting:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, X64]
     steps:
     - name: curl
       run: |
-         curl "https://o61kbs0zca.execute-api.us-west-2.amazonaws.com/prod/api/todos" \
-          -X POST \
-          -d "{\"repository\": \"starhawk-demo/starhawk-demo\",\"source\": \"codecatalyst\",\"pr\": \"12e4837d9ced38e56937182267776a129544b150\",\"release_type\": \"CD\"}" \
-          -H "content-type: application/json" 
+         uname -r
