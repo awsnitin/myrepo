@@ -28,8 +28,11 @@ jobs:
         with:
           distribution: 'zulu' # See 'Supported distributions' for available options
           java-version: '21'
-      - run: echo hello > ./test.txt
+      - name: Make a file with a lot of repeated text
+        run: |
+          for i in {1..100000}; do echo -n 'foobar' >> foobar.txt; done
       - uses: actions/upload-artifact@v4
         with:
           name: my-artifact
-          path: ./test.txt      
+          path: foobar.txt
+          compression-level: 9    
