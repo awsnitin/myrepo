@@ -6,6 +6,10 @@ jobs:
   greeting:
     runs-on: [self-hosted, linux, X64]
     steps:
-    - name: curl
-      run: |
-         uname -r
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: main
+      - name: curl
+        run: |
+           uname -r
