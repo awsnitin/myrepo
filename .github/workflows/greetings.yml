@@ -12,4 +12,5 @@ jobs:
           path: main
       - name: curl
         run: |
+           ls
            uname -r
