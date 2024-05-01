@@ -6,7 +6,7 @@ jobs:
   greeting:
     runs-on: ubuntu-latest
     container:
-      image: jenkins/jenkins:jdk17
+      image: circleci/jruby:9.2.20.1-jdk17-node-browsers-legacy
     steps:
       - name: TEST-GHA
         run: |
