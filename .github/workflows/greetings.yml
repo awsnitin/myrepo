@@ -4,35 +4,11 @@ on: [push, workflow_dispatch]
 
 jobs:
   greeting:
-    runs-on: [self-hosted, linux, X64]
+    runs-on: ubuntu-latest
+    container:
+      image: jenkins/jenkins:jdk17
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          path: main
-      - name: curl
+      - name: TEST-GHA
         run: |
            ls
            uname -r
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-      - name: Cache Primes
-        id: cache-primes
-        uses: actions/cache@v4
-        with:
-          path: main
-          key: ${{ runner.os }}-workspace        
-      - uses: actions/setup-java@v4
-        with:
-          distribution: 'zulu' # See 'Supported distributions' for available options
-          java-version: '21'
-      - name: Make a file with a lot of repeated text
-        run: |
-          for i in {1..100000}; do echo -n 'foobar' >> foobar.txt; done
-      - uses: actions/upload-artifact@v4
-        with:
-          name: my-artifact
-          path: foobar.txt
-          compression-level: 9    
