@@ -8,9 +8,7 @@ jobs:
     container:
       image: circleci/jruby:9.2.20.1-jdk17-node-browsers-legacy
     steps:
-      - uses: docker/setup-buildx-action@v3
-      - uses: docker/build-push-action@v5
-        with:
-          context: .
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+      - name: TEST-GHA
+        run: |
+           ls
+           uname -r
